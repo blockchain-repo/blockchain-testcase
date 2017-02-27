@@ -60,18 +60,18 @@ blocks_status_containing_tx :  {'a5b066026a3d74f0481de67e42df34e96f4541389100fcf
 拜占庭容错（伪造投票）
 ```
 ~/unichain-testcase$ sudo killall unichain
-~/unichain-testcase$ python3 BFT.py
-
-tx_id                       :  1c07f5ce53a5b8eb421d0a57f132ffd703bc15dab57a8151c8cc8e0bbdb9d320
-valid block       timestamp :  1487920179532
-tamper block.timestamp to 1 :
+~/unichain-testcase$ python3 BFT.py 
+ 
+tx_id                       :  aa648edd0c2dfeca734bf078da3ccea75901a22501cbfd0852beac214f6bdf41
+valid block       timestamp :  1488164106038
+tamper block.timestamp to 1 : 
 invalid block     timestamp :  1
-tamper_block_id             :  8642e936dda6d12b4d8ef33e59bfa7d849204c06c406b8134a5e5f1812070cf3
-db response of block        :  {'skipped': 0, 'inserted': 1, 'unchanged': 0, 'replaced': 0, 'deleted': 0, 'errors': 0}
-crate vote 'True'           :  {'signature': b'4dg1Z4EDYKd2ukY7WUTpSWxxuFyptxK6JN1ruywi9EUrQ7JY2GbUhHcsqL3knBUJjNXj9XoeWb5d4Ng8QW8HUsp7', 'vote': {'invalid_reason': None, 'timestamp': '1487920181596', 'previous_block': 'cf3c20d0be478f088eb7a7bcd32993aea952fe40a02d70cefd8b45442461c881', 'is_block_valid': True, 'voting_for_block': '8642e936dda6d12b4d8ef33e59bfa7d849204c06c406b8134a5e5f1812070cf3'}, 'node_pubkey': 'CLGX2DmFKUCYzBExDgoUbXqotuVjg2uGDSKnirew7Tad'}
-db response of vote         :  {'skipped': 0, 'inserted': 1, 'unchanged': 0, 'replaced': 0, 'deleted': 0, 'generated_keys': ['67820ae2-6675-441c-88b4-9dacb7064a36'], 'errors': 0}
-tamper_block status         :  valid
-blocks_status_containing_tx :  {'8642e936dda6d12b4d8ef33e59bfa7d849204c06c406b8134a5e5f1812070cf3': 'valid'}
-wait for 15 sec             :
-blocks_status_containing_tx :  {'8642e936dda6d12b4d8ef33e59bfa7d849204c06c406b8134a5e5f1812070cf3': 'valid'}
+tamper_block_id             :  70b299415bc245b75fa34d3dcf0a7ec5acf77e72b5dac1bcbd9274b2686634df
+db response of block        :  {'deleted': 0, 'replaced': 0, 'inserted': 1, 'skipped': 0, 'errors': 0, 'unchanged': 0}
+crate vote 'True'           :  {'signature': b'rzzfuphD6ma4syVgnbWdMGo1qkoD4BuDw3tydzCC2F4fqsPDCGjpXSz6dAgRqxURZiuN8gsobJn3QUGtxFfoyaQ', 'vote': {'previous_block': 'ad5df5d07b7d282852db0e19d8f3e31b2c9a2e0920419e911f66e2f6ba67e124', 'timestamp': '1488164108069', 'is_block_valid': True, 'voting_for_block': '70b299415bc245b75fa34d3dcf0a7ec5acf77e72b5dac1bcbd9274b2686634df', 'invalid_reason': None}, 'node_pubkey': 'ETbj6aHqTCqnHSw4SUDhy8M98RjnNp79DowMyKfPiUb3'}
+db response of vote         :  {'deleted': 0, 'errors': 0, 'replaced': 0, 'inserted': 1, 'skipped': 0, 'generated_keys': ['215d463c-9678-4484-bb95-3f702d059763'], 'unchanged': 0}
+tamper_block status         :  invalid
+blocks_status_containing_tx :  {'70b299415bc245b75fa34d3dcf0a7ec5acf77e72b5dac1bcbd9274b2686634df': 'invalid'}
+wait for 15 sec             : 
+blocks_status_containing_tx :  {'c5e1e61cb4523062f0b18891db224e7a08d7d9bd7f0b52a7605d3a15864db29f': 'valid', '70b299415bc245b75fa34d3dcf0a7ec5acf77e72b5dac1bcbd9274b2686634df': 'invalid'}
 ```
