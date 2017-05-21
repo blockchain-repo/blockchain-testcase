@@ -52,7 +52,9 @@ block timestamp right now   :  1
 tamper_block_id             :  b30d1672b57cc1df7781162e8f276059d8a81d24346d36b6e844238ddb14597c
 db response                 :  {'replaced': 0, 'errors': 0, 'skipped': 0, 'inserted': 1, 'unchanged': 0, 'deleted': 0}
 tamper_block status         :  invalid
-blocks_status_containing_tx :  {'a5b066026a3d74f0481de67e42df34e96f4541389100fcfc5af444c2eb242986': 'valid', 'b30d1672b57cc1df7781162e8f276059d8a81d24346d36b6e844238ddb14597c': 'invalid'}
+blocks_status_containing_tx : 
+ {'a5b066026a3d74f0481de67e42df34e96f4541389100fcfc5af444c2eb242986': 'valid',
+'b30d1672b57cc1df7781162e8f276059d8a81d24346d36b6e844238ddb14597c': 'invalid'}
 ```
 
 ####4.[`BFT.py`](./BFT.py)
