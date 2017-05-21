@@ -75,5 +75,7 @@ db response of vote         :  {'deleted': 0, 'errors': 0, 'replaced': 0, 'inser
 tamper_block status         :  invalid
 blocks_status_containing_tx :  {'70b299415bc245b75fa34d3dcf0a7ec5acf77e72b5dac1bcbd9274b2686634df': 'invalid'}
 wait for 15 sec             : 
-blocks_status_containing_tx :  {'c5e1e61cb4523062f0b18891db224e7a08d7d9bd7f0b52a7605d3a15864db29f': 'valid', '70b299415bc245b75fa34d3dcf0a7ec5acf77e72b5dac1bcbd9274b2686634df': 'invalid'}
+blocks_status_containing_tx : 
+ {'c5e1e61cb4523062f0b18891db224e7a08d7d9bd7f0b52a7605d3a15864db29f': 'valid', 
+'70b299415bc245b75fa34d3dcf0a7ec5acf77e72b5dac1bcbd9274b2686634df': 'invalid'}
 ```
