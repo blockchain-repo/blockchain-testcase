@@ -4,6 +4,8 @@ from bigchaindb.common.transaction import Transaction, Asset, Fulfillment
 from bigchaindb.common.util import serialize
 from bigchaindb import Bigchain
 
+delay = 5
+
 def create_double():
     ##################################################### 1.CREATE
     # Cryptographic Identities Generation
@@ -30,7 +32,7 @@ def create_double():
     print("1.tx_create db response : ",b.write_transaction(tx))
 
     # wait 2 sec
-    sleep(2)
+    sleep(delay)
 
     # get tx by id
     tx = b.get_transaction(tx_id)
@@ -65,7 +67,7 @@ def create_double():
     print("2.tx_transfer db response : ",b.write_transaction(tx1))
 
     # wait 2 sec
-    sleep(2)
+    sleep(delay)
 
     # get tx by id
     tx1 = b.get_transaction(tx1_id)
@@ -100,7 +102,7 @@ def create_double():
     print("3.tx_double db response : ",b.write_transaction(tx1))
 
     # wait 2 sec
-    sleep(2)
+    sleep(delay)
 
     # get tx by id
     tx1 = b.get_transaction(tx1_id)
