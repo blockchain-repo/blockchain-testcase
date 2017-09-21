@@ -40,7 +40,7 @@ def bft():
     print("tamper_block_id             : ",block_id)
     
     print("db response of block        : ",b.write_block(block))
-    sleep(2)
+    sleep(0)
 
     last_voted_id = b.get_last_voted_block().id
     vote = b.vote(block_id,last_voted_id, True)
@@ -55,5 +55,6 @@ def bft():
     print(" ")
 
 if __name__=='__main__':
+    print("this test case should run in a cluster")
     bft()
 
