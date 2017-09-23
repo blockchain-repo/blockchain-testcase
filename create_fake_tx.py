@@ -4,6 +4,8 @@ from bigchaindb.common.transaction import Transaction, Asset, Fulfillment
 from bigchaindb.common.util import serialize
 from bigchaindb import Bigchain
 
+delay = 4
+
 def create_transfer():
     ##################################################### 1.CREATE
     # Cryptographic Identities Generation
@@ -30,7 +32,7 @@ def create_transfer():
     print("1.tx_create db response : ",b.write_transaction(tx))
 
     # wait 2 sec
-    sleep(2)
+    sleep(delay)
 
     # get tx by id
     tx = b.get_transaction(tx_id)
@@ -65,7 +67,7 @@ def create_transfer():
     print("2.tx_fake db response : ",b.write_transaction(tx))
 
     # wait 2 sec
-    sleep(2)
+    sleep(delay)
 
     # get tx by id
     tx = b.get_transaction(tx_id)

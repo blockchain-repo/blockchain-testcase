@@ -5,6 +5,8 @@ from bigchaindb.common.util import serialize
 from bigchaindb import Bigchain
 from bigchaindb.models import Block
 
+delay = 5
+
 def tamper_block():
     # Cryptographic Identities Generation
     alice, bob = generate_keypair(), generate_keypair()
@@ -36,7 +38,7 @@ def tamper_block():
     print("block timestamp right now   : ",block.to_dict()['block']['timestamp'])
     print("tamper_block_id             : ",block_id)
     print("db response                 : ",b.write_block(block))
-    sleep(2)
+    sleep(delay)
     print("tamper_block status         : ",b.block_election_status(block_id,block_voters))
     print("blocks_status_containing_tx : ",b.get_blocks_status_containing_tx(tx_id))
     print(" ")
