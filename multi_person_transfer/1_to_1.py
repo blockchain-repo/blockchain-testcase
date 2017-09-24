@@ -8,7 +8,7 @@ from bigchaindb.common.crypto import generate_key_pair
 pri_1, pub_1 = generate_key_pair()
 pri_n1, pub_n1 = generate_key_pair()
 
-delay = 3  # 发送交易后，等待建块投票延迟
+delay = 4  # 发送交易后，等待建块投票延迟
 msg = "1_to_n"
 asset = Asset(data={'money': 'RMB'}, data_id='20170628150000', divisible=True)
 metadata = {'raw': msg}
