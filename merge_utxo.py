@@ -32,16 +32,16 @@ def merge_utxo(alicepub,alicepriv,include_spent):
                 'cid': i['cid'],
                 'txid': i['txid'],
             },
-            'owners_before': [alicepriv],
+            'owners_before': [alicepub],
         })
         inputs.append(f)
         balance += i['amount']
 
     length = len(utxo)
     if balance <= 0:
-        return 'No need to merge, because of lack of balance'
+        print('No need to merge, because of lack of balance')
     elif length <= 1:
-        return 'No need to merge, because utxo len = 1'
+        print('No need to merge, because utxo len = 1')
     else:
         tx = Transaction.transfer(inputs, [([alicepub], balance)], metadata=metadata, asset=asset)
         tx = tx.sign([alicepriv])
