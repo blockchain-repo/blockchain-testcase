@@ -10,7 +10,7 @@ pri_n1, pub_n1 = generate_key_pair()
 pri_n2, pub_n2 = generate_key_pair()
 pri_n3, pub_n3 = generate_key_pair()
 
-delay = 3  # 发送交易后，等待建块投票延迟
+delay = 4  # 发送交易后，等待建块投票延迟
 msg = "1_to_n"
 asset = Asset(data={'money': 'RMB'}, data_id='20170628150000', divisible=True)
 metadata = {'raw': msg}
@@ -52,11 +52,11 @@ with requests.Session() as session:
         })
         inputs.append(f)
         balance += i['amount']
-    print("========pub_1 balance======\n", balance)
+    print("========userA balance======\n", balance)
     print(res.json())
 
 # 转移资产交易pub_1->n1,n2,n3
-print("========transfer to pub_n1,pub_n2,pub_n3======")
+print("========transfer to userB,userC,userD======")
 tx = Transaction.transfer(inputs, [([pub_n1], amount_n1), ([pub_n2], amount_n2), ([pub_n3], amount_n3)], asset,
                           metadata)
 tx = tx.sign([pri_1]).to_dict()
@@ -77,7 +77,7 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_1 balance======\n", balance)
+    print("========userA balance======\n", balance)
     print(res.json())
 
 with requests.Session() as session:
@@ -87,7 +87,7 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_n1 balance======\n", balance)
+    print("========userB balance======\n", balance)
     print(res.json())
 with requests.Session() as session:
     res = session.get(
@@ -96,7 +96,7 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_n2 balance======\n", balance)
+    print("========userC balance======\n", balance)
     print(res.json())
 with requests.Session() as session:
     res = session.get(
@@ -105,5 +105,5 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_n3 balance======\n", balance)
+    print("========userD balance======\n", balance)
     print(res.json())
