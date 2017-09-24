@@ -28,14 +28,24 @@ def create_transfer(alicepub,alicepriv,bobpub,bobpriv,include_spent):
     # write to backlog
     b = Bigchain()
     b.write_transaction(tx)
-
+    print("create 100 asset for userA")
+    print("========wait for block and vote...========")
     # wait 2 sec
     sleep(5)
 
     # get tx by id
     tx = b.get_transaction(tx_id)
+    print("create 100 asset tx1_id:" + tx.to_dict()['id'])
 
-    print("create asset tx1_id:" + tx.to_dict()['id'])
+    ##################################################### 3.UTXO
+    #  inputs and asset
+    utxo = b.get_outputs_filtered_not_include_freeze(alicepub, include_spent)
+    for u in utxo:
+        # print(u)
+        u.pop('details')
+    print('userA unspent asset:')
+    print(json.dumps(utxo, indent=4))
+    # print(json.load(utxo))
 
     ##################################################### 2.Freeze
     #  inputs and asset
@@ -61,14 +71,15 @@ def create_transfer(alicepub,alicepriv,bobpub,bobpriv,include_spent):
     # write to backlog
     b = Bigchain()
     b.write_transaction(tx)
-
+    print("freeze 90 asset for userA")
+    print("========wait for block and vote...========")
     # wait 2 sec
     sleep(5)
 
     # get tx by id
     tx = b.get_transaction(tx_id)
 
-    print("freeze asset tx2_id:" + tx.to_dict()['id'])
+    print("freeze 90 asset tx2_id:" + tx.to_dict()['id'])
 
     ##################################################### 3.UTXO
     #  inputs and asset
@@ -91,7 +102,7 @@ if __name__ == '__main__':
     bobprivate_key = bob.private_key
 
     include_spent = False
-    print("the owner's public key  : ", alicepublic_key)
-    print("the owner's private key : ", aliceprivate_key)
+    print("userA public key  : ", alicepublic_key)
+    print("userA private key : ", aliceprivate_key)
     create_transfer(alicepublic_key,aliceprivate_key,bobpublic_key,bobprivate_key,include_spent)
 
