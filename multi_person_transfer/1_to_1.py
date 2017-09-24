@@ -52,7 +52,7 @@ with requests.Session() as session:
     print(res.json())
 
 # 转移资产交易pub_1->n1
-print("========transfer to pub_n1,pub_n2,pub_n3======")
+print("========transfer to pub_n1======")
 tx = Transaction.transfer(inputs, [([pub_n1], amount_n1)], asset,
                           metadata)
 tx = tx.sign([pri_1]).to_dict()
