@@ -24,6 +24,7 @@ def merge_utxo(alicepub,alicepriv,include_spent):
     print(json.dumps(utxo, indent=4))
     inputs = []
     balance = 0
+    utxo = b.get_outputs_filtered_not_include_freeze(alicepub, include_spent)
     for i in utxo:
         f = Fulfillment.from_dict({
             'fulfillment': i['details'],
