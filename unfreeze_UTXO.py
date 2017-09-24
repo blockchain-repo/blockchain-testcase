@@ -69,7 +69,7 @@ def create_transfer(public_key,private_key,include_spent):
     for u in utxo:
         # print(u)
         u.pop('details')
-        print('unspent asset:')
+    print('userA unspent asset:')
     print(json.dumps(utxo,indent=4))
     # print(json.load(utxo))
 
