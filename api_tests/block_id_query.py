@@ -11,7 +11,7 @@ print("api config: ", config)
 url = 'http://{}:{}/uniledger/v1/transaction/queryGroupByBlock'.format(config['ip'], config['port'])
 
 res = requests.post(url)
-print("api response:", res.json())
+# print("api response:", res.json())
 
 url = 'http://{}:{}/uniledger/v1/block/queryByID'.format(config['ip'], config['port'])
 
