@@ -10,5 +10,6 @@ for block in block_list:
     votes = list(b.backend.get_votes_by_block_id(block))
     vote_cast = [vote['vote']['is_block_valid'] for vote in votes]
     block_status = b.block_election_status(block, block_voter)
-    print(block, vote_cast, block_status, "\n", votes, "\n")
+    # print(block, vote_cast, block_status, "\n", votes, "\n")
+    print(block, vote_cast, block_status, "\n")
 
