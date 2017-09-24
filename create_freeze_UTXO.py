@@ -28,7 +28,7 @@ def create_transfer(alicepub,alicepriv,bobpub,bobpriv,include_spent):
     # write to backlog
     b = Bigchain()
     b.write_transaction(tx)
-    print("create 100 asset for userA")
+    print("========create 100 asset for userA========")
     print("========wait for block and vote...========")
     # wait 2 sec
     sleep(5)
@@ -71,7 +71,7 @@ def create_transfer(alicepub,alicepriv,bobpub,bobpriv,include_spent):
     # write to backlog
     b = Bigchain()
     b.write_transaction(tx)
-    print("freeze 90 asset for userA")
+    print("========freeze 90 asset for userA ========")
     print("========wait for block and vote...========")
     # wait 2 sec
     sleep(5)
@@ -87,7 +87,7 @@ def create_transfer(alicepub,alicepriv,bobpub,bobpriv,include_spent):
     for u in utxo:
         # print(u)
         u.pop('details')
-    print('unspent asset:')
+    print('userA unspent asset:')
     print(json.dumps(utxo,indent=4))
     # print(json.load(utxo))
 
