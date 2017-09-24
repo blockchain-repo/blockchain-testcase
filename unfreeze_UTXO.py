@@ -20,7 +20,7 @@ def create_transfer(public_key,private_key,include_spent):
     # for u in utxo_freeze:
     #     # print(u)
     #     u.pop('details')
-    print('frozen asset:')
+    print('userA frozen asset:')
     print(json.dumps(utxo_freeze,indent=4))
     # print(json.load(utxo))
 
@@ -53,7 +53,8 @@ def create_transfer(public_key,private_key,include_spent):
     # write to backlog
     b = Bigchain()
     b.write_transaction(tx)
-
+    print("unfreeze asset for userA")
+    print("========wait for block and vote...========")
     # wait 2 sec
     sleep(5)
 
