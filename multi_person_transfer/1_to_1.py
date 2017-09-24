@@ -48,11 +48,11 @@ with requests.Session() as session:
         })
         inputs.append(f)
         balance += i['amount']
-    print("========pub_1 balance======\n", balance)
+    print("========userA balance======\n", balance)
     print(res.json())
 
 # 转移资产交易pub_1->n1
-print("========transfer to pub_n1======")
+print("========transfer to userB======")
 tx = Transaction.transfer(inputs, [([pub_n1], amount_n1)], asset,
                           metadata)
 tx = tx.sign([pri_1]).to_dict()
@@ -73,7 +73,7 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_1 balance======\n", balance)
+    print("========userA balance======\n", balance)
     print(res.json())
 
 with requests.Session() as session:
@@ -83,5 +83,5 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_n1 balance======\n", balance)
+    print("========userB balance======\n", balance)
     print(res.json())
