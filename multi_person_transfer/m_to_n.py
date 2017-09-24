@@ -60,7 +60,7 @@ with requests.Session() as session:
         })
         inputs.append(f)
         balance += i['amount']
-    print("========pub_m1 balance======\n", balance)
+    print("========userA balance======\n", balance)
     print(res.json())
 
     res = session.get(
@@ -78,11 +78,11 @@ with requests.Session() as session:
         })
         inputs.append(f)
         balance += i['amount']
-    print("========pub_m2 balance======\n", balance)
+    print("========userB balance======\n", balance)
     print(res.json())
 
 # 转移资产交易 m1,m2->n1,n2,n3
-print("========m1,m2 transfer to pub_n1,pub_n2,pub_n3======")
+print("========userA,userB transfer to userC,userD,usrE======")
 tx = Transaction.transfer(inputs, [([pub_n1], amount_n1), ([pub_n2], amount_n2), ([pub_n3], amount_n3)], asset,
                           metadata)
 tx = tx.sign([pri_m1, pri_m2]).to_dict()
@@ -103,7 +103,7 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_m1 balance======\n", balance)
+    print("========userA balance======\n", balance)
     print(res.json())
 with requests.Session() as session:
     res = session.get(
@@ -112,7 +112,7 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_m1 balance======\n", balance)
+    print("========userB balance======\n", balance)
     print(res.json())
 
 with requests.Session() as session:
@@ -123,7 +123,7 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_n1 balance======\n", balance)
+    print("========userC balance======\n", balance)
     print(res.json())
 with requests.Session() as session:
     res = session.get(
@@ -132,7 +132,7 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_n2 balance======\n", balance)
+    print("========userD balance======\n", balance)
     print(res.json())
 with requests.Session() as session:
     res = session.get(
@@ -142,5 +142,5 @@ with requests.Session() as session:
     balance = 0
     for i in res.json()['data']:
         balance += i['amount']
-    print("========pub_n3 balance======\n", balance)
+    print("========userE balance======\n", balance)
     print(res.json())
