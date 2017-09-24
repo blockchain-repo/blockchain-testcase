@@ -7,7 +7,7 @@ from bigchaindb import Bigchain
 import json
 
 
-def create_transfer(alicepub,alicepriv,bobpub,bobpriv,include_spent):
+def create_transfer(alicepub,alicepriv,include_spent):
     ##################################################### 1.CREATE
     # Cryptographic Identities Generation
     # alice, bob = generate_keypair(), generate_keypair()
@@ -104,5 +104,5 @@ if __name__ == '__main__':
     include_spent = False
     print("userA public key  : ", alicepublic_key)
     print("userA private key : ", aliceprivate_key)
-    create_transfer(alicepublic_key,aliceprivate_key,bobpublic_key,bobprivate_key,include_spent)
+    create_transfer(alicepublic_key,aliceprivate_key,include_spent)
 
