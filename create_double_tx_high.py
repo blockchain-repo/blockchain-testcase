@@ -7,6 +7,7 @@ from bigchaindb import Bigchain
 delay = 5
 
 
+# can not use !
 def create_double():
     ##################################################### 1.CREATE
     # Cryptographic Identities Generation
@@ -19,7 +20,8 @@ def create_double():
     metadata = {'planet': 'earth'}
 
     # create trnsaction  TODO : owners_before might be node_pubkey in v0.8.0
-    tx = Transaction.create([alice.public_key], [([alice.public_key], 100)], metadata=metadata, asset=asset)
+    tx = Transaction.create([alice.public_key], [([alice.public_key], 100), ([alice.public_key], 100)],
+                            metadata=metadata, asset=asset)
     print(" ")
     print("1.tx_create asset id    :  alice-----money(", tx.to_dict()['transaction']['asset']['id'], ")----->alice")
     print("1.tx_create tx id       : ", tx.to_dict()['id'])
@@ -74,19 +76,46 @@ def create_double():
 
     # get tx by id
     tx1 = b.get_transaction(tx1_id)
-    # block = list(b.get_blocks_status_containing_tx(tx1_id).keys())[0]
-    # votes = list(b.backend.get_votes_by_block_id(block))
-    # votes_cast = [vote['vote']['is_block_valid'] for vote in votes]
-    # election = b.get_blocks_status_containing_tx(tx1_id)
+    block = list(b.get_blocks_status_containing_tx(tx1_id).keys())[0]
+    votes = list(b.backend.get_votes_by_block_id(block))
+    votes_cast = [vote['vote']['is_block_valid'] for vote in votes]
+    election = b.get_blocks_status_containing_tx(tx1_id)
     print("2.tx_transfer query       : ", tx1)
-    # print("2.tx_transfer block       : ", block)
-    # print("2.            votes       : ", votes)
-    # print("2.            votes_cast  : ", votes_cast)
-    # print("2.            election    : ", election)
+    print("2.tx_transfer block       : ", block)
+    print("2.            votes       : ", votes)
+    print("2.            votes_cast  : ", votes_cast)
+    print("2.            election    : ", election)
     print(" ")
+    ##################################################### 3.INTERVAL
+    # Cryptographic Identities Generation
+    alice, bob = generate_keypair(), generate_keypair()
+
+    # Digital Asset Definition (e.g. money)
+    asset = Asset(data={'money': 'RMB'}, data_id='20170628150000', divisible=True)
+
+    # Metadata Definition
+    metadata = {'planet': 'earth'}
+
+    # create trnsaction  TODO : owners_before might be node_pubkey in v0.8.0
+    txi = Transaction.create([alice.public_key], [([alice.public_key], 100), ([alice.public_key], 100)],
+                             metadata=metadata, asset=asset)
+    print(" ")
+    print("1.tx_create asset id    :  alice-----money(", tx.to_dict()['transaction']['asset']['id'], ")----->alice")
+    print("1.tx_create tx id       : ", txi.to_dict()['id'])
+
+    # sign with alice's private key
+    txi = txi.sign([alice.private_key])
+    tx_id = txi.to_dict()['id']
+
+    # write to backlog
+    b = Bigchain()
+    print("1.tx_create db response : ", b.write_transaction(tx))
+
+    # wait 2 sec
+    sleep(delay)
     ##################################################### 3.TRANSFER
     #  inputs and asset [double spend]
-    cid = 0
+    cid = 1
     condition = tx.to_dict()['transaction']['conditions'][cid]
     inputs = Fulfillment.from_dict({
         'fulfillment': condition['condition']['details'],
