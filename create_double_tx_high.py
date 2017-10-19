@@ -74,17 +74,16 @@ def create_double():
 
     # get tx by id
     tx1 = b.get_transaction(tx1_id)
-    block = list(b.get_blocks_status_containing_tx(tx1_id).keys())[0]
-    votes = list(b.backend.get_votes_by_block_id(block))
-    votes_cast = [vote['vote']['is_block_valid'] for vote in votes]
-    election = b.get_blocks_status_containing_tx(tx1_id)
+    # block = list(b.get_blocks_status_containing_tx(tx1_id).keys())[0]
+    # votes = list(b.backend.get_votes_by_block_id(block))
+    # votes_cast = [vote['vote']['is_block_valid'] for vote in votes]
+    # election = b.get_blocks_status_containing_tx(tx1_id)
     print("2.tx_transfer query       : ", tx1)
-    print("2.tx_transfer block       : ", block)
-    print("2.            votes       : ", votes)
-    print("2.            votes_cast  : ", votes_cast)
-    print("2.            election    : ", election)
+    # print("2.tx_transfer block       : ", block)
+    # print("2.            votes       : ", votes)
+    # print("2.            votes_cast  : ", votes_cast)
+    # print("2.            election    : ", election)
     print(" ")
-
     ##################################################### 3.TRANSFER
     #  inputs and asset [double spend]
     cid = 0
@@ -116,10 +115,15 @@ def create_double():
 
     # get tx by id
     tx1 = b.get_transaction(tx1_id)
-    print("3.tx_double query       : ", tx1)
-    print(" ")
-
-    print("4.          block       : ", b.get_block(block))
+    block = list(b.get_blocks_status_containing_tx(tx1_id).keys())[0]
+    votes = list(b.backend.get_votes_by_block_id(block))
+    votes_cast = [vote['vote']['is_block_valid'] for vote in votes]
+    election = b.get_blocks_status_containing_tx(tx1_id)
+    print("3.tx_transfer query       : ", tx1)
+    print("3.tx_transfer block       : ", block)
+    print("3.            votes       : ", votes)
+    print("3.            votes_cast  : ", votes_cast)
+    print("3.            election    : ", election)
     print(" ")
 
 
